@@ -1,28 +1,21 @@
-import java.util.Scanner;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class RandomWord {
     public static void main(String[] args) {
-        // System.out.println("Hello " + args[0] + " length " + args.length);
-        Scanner input = new Scanner(System.in);
-        // String inputString = scanner.nextLine();
-        // boolean b1 = StdIn.isEmpty();
-        // StdOut.println("Before reading:" + b1);
-        // String abc = StdIn.readString();
-        // boolean b2 = StdIn.isEmpty();
-        // StdOut.println("After reading:" + b2);
+        String survived = "";
+        int i = 0;
 
-        // System.out.println("Out :" + inputString);
-        // StdOut.println("Out :" + abc);
-        while (input.hasNext()) {
-            String s = input.nextLine();
-            String[] strArray = s.split(" ");
-            String survived = strArray[0];
-
-            for (int i = 0; i < strArray.length; i++) {
-                survived = strArray[i];
-                System.out.println("Iteration: " + i + "; Item: " + survived);
+        while (!StdIn.isEmpty()) {
+            i++;
+            String next = StdIn.readString();
+            double probability = 1.0 / i;
+            if (StdRandom.bernoulli(probability)) {
+                survived = next;
             }
-            System.out.println("Survived: " + survived);
         }
+
+        StdOut.println(survived);
     }
 }
